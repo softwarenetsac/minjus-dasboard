@@ -1,0 +1,45 @@
+<div class="flex flex-wrap p-3">
+    <div class="w-full bg-white border rounded shadow p-6">
+        <minjus-indicadores-dashboard-filtros [anioCombo]="true" [distritoJudicialCombo]="true" (onSubmit)="obtenerGrafico($event)"></minjus-indicadores-dashboard-filtros>
+    </div>
+</div>
+<div class="flex flex-wrap" [ngClass]="graficoDataSource.length > 0 ? '' : 'invisible'">
+    <div class="w-full md:w-1/2 p-3">
+        <div class="overflow-x-auto">
+            <table class="border-collapse border border-green-700 w-full min-w-full text-xs" cellpadding="10">
+                <thead>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center" rowspan="2">DIRECCIÓN DISTRITAL</th>
+                        <th class="border border-green-700 text-center" colspan="3">N° DE BENEFICIARIOS</th>
+                    </tr>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center">FEMENINO</th>
+                        <th class="border border-green-700 text-center">MASCULINO</th>
+                        <th class="border border-green-700 text-center">TOTAL</th>
+                    </tr>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center">%</th>
+                        <th class="border border-green-700 text-center">{{((sumatoria('FEMENINO') / sumatoria('total_participante')) * 100) | number : '1.2-2'}}%</th>
+                        <th class="border border-green-700 text-center">{{((sumatoria('MASCULINO') / sumatoria('total_participante')) * 100) | number : '1.2-2'}}%</th>
+                        <th class="border border-green-700 text-center">100%</th>
+                    </tr>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center">Total general</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('FEMENINO') | number}}</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('MASCULINO') | number}}</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('total_participante') | number}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of graficoDataSource; let i = index">
+                        <td class="border border-green-700 text-center">{{r.DIRECCION_DISTRITAL}}</td>
+                        <td class="border border-green-700 text-center">{{r.FEMENINO | number}}</td>
+                        <td class="border border-green-700 text-center">{{r.MASCULINO | number}}
+                        </td>
+                        <td class="border border-green-700 text-center">{{r.total_participante | number}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

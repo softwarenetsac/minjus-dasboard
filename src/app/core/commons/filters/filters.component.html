@@ -1,0 +1,288 @@
+<div class="flex flex-wrap">
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="tipoCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="tipo">
+            Tipo de consulta
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="tipo" [(ngModel)]='tipo'>
+                <option value="DIARIO">MES DIARIO</option>
+                <option value="CERRADO">MES CERRADO</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="tipo">
+                <ng-option value="DIARIO">MES DIARIO</ng-option>
+                <ng-option value="CERRADO">MES CERRADO</ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="tipoInformacionCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="tipo">
+            Tipo de informaci&oacute;n
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="informacion" [(ngModel)]='informacion'>
+                <option value="CONSULTAS">CONSULTAS</option>
+                <option value="PATROCINIOS">PATROCINIOS</option>
+                <option value="EVENTOS">EVENTOS</option>
+                <option value="PATROCINIO_DELITO">PATROCINIO DELITO</option>
+                <option value="DILIGENCIA_LIBRE">DILIGENCIA LIBRE</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="informacion">
+                <ng-option value="CONSULTAS">CONSULTAS</ng-option>
+                <ng-option value="PATROCINIOS">PATROCINIOS</ng-option>
+                <ng-option value="EVENTOS">EVENTOS</ng-option>
+                <ng-option value="PATROCINIO_DELITO">PATROCINIO DELITO</ng-option>
+                <ng-option value="DILIGENCIA_LIBRE">DILIGENCIA LIBRE</ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="anioCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="anio">
+            Año
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="anio" [(ngModel)]='anio'>
+                <option *ngFor="let a of anioDataSource" [value]="a.codigo">{{a.nombre}}</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="anio">
+                <ng-option [value]="item.codigo" *ngFor="let item of anioDataSource">
+                    {{item.nombre}}
+                </ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="materiaCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="materia">
+            Materia
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="materia" [(ngModel)]='materia'>
+                <option value="0">-- TODOS --</option>
+                <option *ngFor="let a of materiaDataSource" [value]="a.codigo">{{a.nombre}}</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="materia">
+                <ng-option value="0">-- TODOS --</ng-option>
+                <ng-option [value]="item.codigo" *ngFor="let item of materiaDataSource">
+                    {{item.nombre}}
+                </ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="grupoServicioCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grupoServicio">
+            Grupo servicio
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grupoServicio" [(ngModel)]='grupoServicio'>
+                <option *ngFor="let a of grupoServicioDataSource" [value]="a.codigo">{{a.nombre}}</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="grupoServicio">
+                <ng-option [value]="item.codigo" *ngFor="let item of grupoServicioDataSource">
+                    {{item.nombre}}
+                </ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="distritoJudicialCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="distrito-judicial">
+            Distrito Judicial
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="distrito-judicial" [(ngModel)]='distritoJudicial' (change)="obtenerSedes()">
+                <option value="0">-- TODOS --</option>
+                <option *ngFor="let a of distritoJudicialDataSource" [value]="a.codigo">{{a.nombre}}</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]='distritoJudicial' (change)="obtenerSedes()">
+                <ng-option value="0">-- TODOS --</ng-option>
+                <ng-option [value]="item.codigo" *ngFor="let item of distritoJudicialDataSource">
+                    {{item.nombre}}
+                </ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="sedeCombo === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="sede">
+            Sede
+        </label>
+        <!--<div class="relative">
+            <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="sede" [(ngModel)]='sede'>
+                <option value="0">-- TODOS --</option>
+                <option *ngFor="let a of sedeDataSource" [value]="a.codigo">{{a.nombre}}</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>-->
+        <div class="relative">
+            <ng-select
+                [searchable]="true" 
+                [clearable]="false"
+                appendTo="body" [(ngModel)]="sede">
+                <ng-option value="0">-- TODOS --</ng-option>
+                <ng-option [value]="item.codigo" *ngFor="let item of sedeDataSource">
+                    {{item.nombre}}
+                </ng-option>
+            </ng-select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="edadesRango === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="edadDesde">
+            Edad desde
+        </label>
+        <div class="relative">
+            <input type="number"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="edadDesde" [(ngModel)]='edadDesde' />
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3 my-2" *ngIf="edadesRango === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="edadHasta">
+            Edad hasta
+        </label>
+        <div class="relative">
+            <input type="number"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="edadHasta" [(ngModel)]='edadHasta' />
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="fechasRango === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="edadDesde">
+            Fecha desde
+        </label>
+        <div class="relative">
+            <input type="date"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="fechaDesde" [ngModel]="fechaDesde | date:'yyyy-MM-dd'" (ngModelChange)="fechaDesde = $event" />
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3" *ngIf="fechasRango === true">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="edadDesde">
+            Fecha hasta
+        </label>
+        <div class="relative">
+            <input type="date"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="fechaHasta" [ngModel]="fechaHasta | date:'yyyy-MM-dd'" (ngModelChange)="fechaHasta = $event" />
+        </div>
+    </div>
+    <div class="w-full md:w-1/6 mb-6 md:mb-0 mx-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            &nbsp;
+        </label>
+        <button
+            class="w-full shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            type="button" (click)="onSend()">
+            {{buscarBoton}}
+        </button>
+    </div>
+</div>

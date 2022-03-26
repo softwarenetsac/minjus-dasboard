@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.ng-select {
+    @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight;
+}
+
+.ng-select-focused {
+    @apply outline-none bg-white border-gray-500;
+}
+
+.ng-dropdown-panel {
+    @apply bg-white border border-red-500 rounded p-2 mt-1;
+}

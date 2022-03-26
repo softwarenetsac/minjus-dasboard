@@ -1,0 +1,66 @@
+<div class="flex flex-wrap p-3">
+    <div class="w-full bg-white border rounded shadow p-6">
+        <minjus-indicadores-dashboard-filtros [anioCombo]="true" [materiaCombo]="true" (onSubmit)="obtenerReporte($event)"></minjus-indicadores-dashboard-filtros>
+    </div>
+</div>
+<div class="flex flex-wrap" *ngIf="tablasDataSource.length > 0">
+    <div class="w-full md:w-1/2 xl:w-1/2 p-3" *ngIf="primeraTablaDataSource.length > 0">
+        <div class="bg-white border rounded shadow p-8">
+            <table class="border-collapse border border-green-700 w-full" cellpadding="10">
+                <thead>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center">DIRECCIÓN DISTRITAL</th>
+                        <th class="border border-green-700 text-center">Total</th>
+                        <th class="border border-green-700 text-center">%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of primeraTablaDataSource">
+                        <td class="border border-green-700">{{r.distrito_judicial}}</td>
+                        <td class="border border-green-700 text-center">{{r.cantidad | number}}</td>
+                        <td class="border border-green-700 text-center">{{((r.cantidad / sumatoria('tablasDataSource', 'cantidad')) * 100).toFixed(2) | number}}%</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700">Subtotal</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('primeraTablaDataSource', 'cantidad') | number}}</th>
+                        <th class="border border-green-700 text-center">{{((sumatoria('primeraTablaDataSource', 'cantidad') / sumatoria('tablasDataSource', 'cantidad')) * 100).toFixed(2) | number}}%</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="w-full md:w-1/2 xl:w-1/2 p-3" *ngIf="segundaTablaDataSource.length > 0">
+        <div class="bg-white border rounded shadow p-8">
+            <table class="border-collapse border border-green-700 w-full" cellpadding="10">
+                <thead>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700 text-center">DIRECCIÓN DISTRITAL</th>
+                        <th class="border border-green-700 text-center">Total</th>
+                        <th class="border border-green-700 text-center">%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of segundaTablaDataSource">
+                        <td class="border border-green-700">{{r.distrito_judicial}}</td>
+                        <td class="border border-green-700 text-center">{{r.cantidad | number}}</td>
+                        <td class="border border-green-700 text-center">{{((r.cantidad / sumatoria('tablasDataSource', 'cantidad')) * 100).toFixed(2) | number}}%</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700">Subtotal</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('segundaTablaDataSource', 'cantidad') | number}}</th>
+                        <th class="border border-green-700 text-center">{{((sumatoria('segundaTablaDataSource', 'cantidad') / sumatoria('tablasDataSource', 'cantidad')) * 100).toFixed(2) | number}}%</th>
+                    </tr>
+                    <tr class="bg-green-700 text-white">
+                        <th class="border border-green-700">Total</th>
+                        <th class="border border-green-700 text-center">{{sumatoria('tablasDataSource', 'cantidad') | number}}</th>
+                        <th class="border border-green-700 text-center">100.00%</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

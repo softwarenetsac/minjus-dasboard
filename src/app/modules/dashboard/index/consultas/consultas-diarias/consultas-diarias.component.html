@@ -1,0 +1,78 @@
+<div class="flex flex-wrap p-3">
+    <div class="w-full bg-white border rounded shadow p-6">
+        <minjus-indicadores-dashboard-filtros [anioCombo]="true" [distritoJudicialCombo]="true" [sedeCombo]="true" (onSubmit)="obtenerGrafico($event)"></minjus-indicadores-dashboard-filtros>
+    </div>
+</div>
+<div class="flex flex-wrap" [ngClass]="graficoDataSource.length > 0 ? '' : 'invisible'">
+    <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+        <div class="bg-white border rounded shadow p-8">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-x-auto">
+                        <table class="border-collapse border border-green-700 w-full min-w-full text-xs" cellpadding="10">
+                            <thead>
+                                <tr class="bg-green-700 text-white">
+                                    <th class="border border-green-700 text-center">CONSULTA</th>
+                                    <th class="border border-green-700 text-center">ENERO</th>
+                                    <th class="border border-green-700 text-center">FEBRERO</th>
+                                    <th class="border border-green-700 text-center">MARZO</th>
+                                    <th class="border border-green-700 text-center">ABRIL</th>
+                                    <th class="border border-green-700 text-center">MAYO</th>
+                                    <th class="border border-green-700 text-center">JUNIO</th>
+                                    <th class="border border-green-700 text-center">JULIO</th>
+                                    <th class="border border-green-700 text-center">AGOSTO</th>
+                                    <th class="border border-green-700 text-center">SEPTIEMBRE</th>
+                                    <th class="border border-green-700 text-center">OCTUBRE</th>
+                                    <th class="border border-green-700 text-center">NOVIEMBRE</th>
+                                    <th class="border border-green-700 text-center">DICIEMBRE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let r of graficoDataSource">
+                                    <td class="border border-green-700 text-center">{{r.materia}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Enero}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Febrero}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Marzo}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Abril}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Mayo}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Junio}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Julio}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Agosto}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Setiembre}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Octubre}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Noviembre}}</td>
+                                    <td class="border border-green-700 text-center">{{r.Diciembre}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="bg-green-700 text-white">
+                                    <th class="border border-green-700">TOTAL</th>
+                                    <th class="border border-green-700">{{sumatoria('Enero')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Febrero')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Marzo')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Abril')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Mayo')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Junio')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Julio')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Agosto')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Setiembre')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Octubre')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Noviembre')}}</th>
+                                    <th class="border border-green-700">{{sumatoria('Diciembre')}}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+        <!--Metric Card-->
+        <div class="bg-white border rounded shadow p-8">
+            <div id="chartdiv2" style="width: 100%;" [ngStyle]="{'height.px': chartHeight}"></div>
+        </div>
+        <!--/Metric Card-->
+    </div>
+</div>
