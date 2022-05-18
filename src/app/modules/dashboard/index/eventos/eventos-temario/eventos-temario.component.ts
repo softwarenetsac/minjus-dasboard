@@ -18,7 +18,9 @@ export class EventosTemarioComponent {
             this.fs.graficosService[event.tipo === 'DIARIO' ? 'eventosTemarioDiario' : 'eventosTemarioCerrado']({
                 "anio": event.anio,
                 "idDistrito": event.distritoJudicial,
-                "idSede": event.sede
+                "idSede": event.sede,
+                "idTipoEvento":0,
+                "idMes":0
             }).subscribe((data: any) => {
                 if (data.codigo === '0000') {
                     if (data.datos != null && data.datos.length > 0) {

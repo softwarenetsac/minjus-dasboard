@@ -17,7 +17,10 @@ export class EventosDistritoComponent {
         if (event.anio && event.distritoJudicial) {
             this.fs.graficosService[event.tipo === 'DIARIO' ? 'eventosDistritoDiario' : 'eventosDistritoCerrado']({
                 "anio": event.anio,
-                "idDistrito": event.distritoJudicial
+                "idSede": event.distritoJudicial,
+                "idTipoEvento":0,
+                "idMes":0,
+                "idTemario":0
             }).subscribe((data: any) => {
                 if (data.codigo === '0000') {
                     if (data.datos != null && data.datos.length > 0) {
